@@ -1,0 +1,20 @@
+.book-details {
+    grid-template-columns: max-content 1fr;
+    gap: 1rem;
+
+    position: relative;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.book-details .sale-icon {
+    width: 4rem;
+    position: absolute;
+    right: 0;
+}

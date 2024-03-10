@@ -4,12 +4,18 @@
     ;
     
     width: 100%;
+    position: relative;
  
 }
 
-.book-preview img{
+.book-preview>img{
     grid-area: img;
     max-width: 8rem;
     border-radius: 6px;
+}
 
+.book-preview img.sale-icon {
+    width: 4rem;
+    position: absolute;
+    right: 0;
 }

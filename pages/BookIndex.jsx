@@ -12,6 +12,7 @@ export function BookIndex() {
 
     useEffect(() => {
         loadBooks()
+
     }, [filterBy])
 
     function loadBooks() {
@@ -32,7 +33,7 @@ export function BookIndex() {
 
     if (!books) return <div>loading...</div>
     return <section className='book-index'>
-        <BookFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+        {!selectedBook && <BookFilter filterBy={filterBy} onSetFilter={onSetFilter} />}
         {!selectedBook && <BookList books={books} onSelectBook={onSelectBook} />}
         {selectedBook && <BookDetails book={selectedBook} onGoBack={() => onSelectBook(null)} />}
 
