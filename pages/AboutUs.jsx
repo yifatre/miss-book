@@ -1,3 +1,3 @@
-export function AboutUs(){
-    
+export function AboutUs() {
+    return <span>About</span>
 }
