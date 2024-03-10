@@ -1,14 +1,10 @@
 .book-preview{
     grid-template-areas:
     "img ."
-    "img ."
     ;
     
     width: 100%;
-    border: 1px solid darkgray;
-    border-radius: 6px;
-
-    padding: 0.5rem;
+ 
 }
 
 .book-preview img{
