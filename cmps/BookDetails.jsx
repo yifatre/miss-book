@@ -28,7 +28,7 @@ export function BookDetails({ book, onGoBack }) {
             <h2>{book.title}</h2>
             <h3>{book.subtitle}</h3>
             <h5>By: {book.authors}</h5>
-            <span>Price: <span className={getPriceClass()}>{book.listPrice.amount + book.listPrice.currencyCode}</span></span>
+            <span>Price: <span className={getPriceClass()}>{(book.listPrice.amount).toLocaleString("en-US", { style: "currency", currency: book.listPrice.currencyCode })}</span></span>
             <span>Number of pages: {book.pageCount} {getPageCountMsg()}</span>
             <span>Language: {book.language}</span>
             <span>Published on {book.publishedDate} {getDateMsg()}</span>
