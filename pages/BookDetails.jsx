@@ -1,7 +1,24 @@
-import { LongText } from "./LongText.jsx";
+const { useState, useEffect } = React
+const { useParams, useNavigate } = ReactRouter
 
-export function BookDetails({ book, onGoBack }) {
-    console.log('book from dets:', book);
+import { bookService } from "../services/book.service.js";
+import { LongText } from "../cmps/LongText.jsx";
+
+export function BookDetails() {
+    const [book, setBook] = useState(null)
+    const { bookId } = useParams()
+    console.log('bookId:', bookId)
+
+    useEffect(() => {
+        loadBook()
+    }, [bookId])
+
+    function loadBook() {
+        bookService.get(bookId)
+            .then(book => setBook(book))
+            .catch(err => console.log('Error:', err))
+        // .finally()
+    }
 
     function getPageCountMsg() {
         if (book.pageCount > 500) return 'Serious Reading'
@@ -22,8 +39,9 @@ export function BookDetails({ book, onGoBack }) {
         if (book.listPrice.amount < 20) return 'green'
     }
 
+    if (!book) return <div>loading...</div>
     return <article className="book-details grid">
-        <img src={book.thumbnail} alt="" />
+        <img src={book.thumbnail}  />
         <div className="flex flex-column">
             <h2>{book.title}</h2>
             <h3>{book.subtitle}</h3>
@@ -33,8 +51,8 @@ export function BookDetails({ book, onGoBack }) {
             <span>Language: {book.language}</span>
             <span>Published on {book.publishedDate} {getDateMsg()}</span>
             {book.listPrice.isOnSale && <img className="sale-icon" src="assets/imgs/sale.gif" alt="" />}
-            <LongText txt={book.description} />
+            {book.description && <LongText txt={book.description} />}
         </div>
-        <button onClick={() => onGoBack()}>Go back</button>
+        {/* <button onClick={() => onGoBack()}>Go back</button> */}
     </article>
 }

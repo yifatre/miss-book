@@ -26,7 +26,7 @@ function query(filterBy = getDefaultFilter()) {
                 const regex = new RegExp(filterBy.title, 'i')
                 books = books.filter(book => regex.test(book.title))
             }
-            if(filterBy.maxPrice){
+            if (filterBy.maxPrice) {
                 books = books.filter(book => book.listPrice.amount <= filterBy.maxPrice)
             }
             return books
@@ -50,7 +50,16 @@ function save(book) {
 }
 
 function getEmptyBook(title = '', price = 50) {
-    return { id: '', title, price }
+    return {
+        id: '',
+        title,
+        subtitle: '',
+        authors: [''],
+        publishedDate: 1900,
+        pageCount: 0,
+        listPrice: { amount: price, currencyCode: 'ILS', isOnSale: false },
+        thumbnail: 'assets/imgs/default-book.png'
+    }
 }
 
 // function getFilterBy() {

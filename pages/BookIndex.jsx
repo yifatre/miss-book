@@ -1,6 +1,8 @@
 const { useState, useEffect } = React
+const { Link } = ReactRouterDOM
 
-import { BookDetails } from "../cmps/BookDetails.jsx"
+
+import { BookDetails } from "./BookDetails.jsx"
 import { BookFilter } from "../cmps/BookFilter.jsx"
 import { BookList } from "../cmps/BookList.jsx"
 import { bookService } from "../services/book.service.js"
@@ -18,7 +20,6 @@ export function BookIndex() {
     function loadBooks() {
         bookService.query(filterBy)
             .then(books => {
-                // console.log('books:', books)
                 return setBooks(books)
             })
     }
@@ -33,9 +34,9 @@ export function BookIndex() {
 
     if (!books) return <div>loading...</div>
     return <section className='book-index'>
-        {!selectedBook && <BookFilter filterBy={filterBy} onSetFilter={onSetFilter} />}
-        {!selectedBook && <BookList books={books} onSelectBook={onSelectBook} />}
-        {selectedBook && <BookDetails book={selectedBook} onGoBack={() => onSelectBook(null)} />}
+        <BookFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+        <Link to="/books/edit"><button>Add Book</button></Link>
+        <BookList books={books} onSelectBook={onSelectBook} />
 
     </section>
 }
