@@ -15,7 +15,7 @@ export function BookFilter({ filterBy, onSetFilter }) {
 
     return <section className="book-filter">
         <h2>Filter Books:</h2>
-        <form>
+        <form className="flex">
             <label htmlFor="title">Title:</label>
             <input onChange={handleChange} type="search" name="title" id="title" value={filterByToEdit.title} />
 

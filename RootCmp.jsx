@@ -8,9 +8,10 @@ export function App() {
     const [page, setPage] = useState('books')
 
     return <section className="app">
-        <header className="app-header">
-            <h1>My App</h1>
-            <nav>
+        <header className="app-header grid">
+            <h1>The Magical Book Shop </h1>
+            <img src="assets/imgs/magic-book.png" alt="" />
+            <nav className="flex">
                 <a href="#" onClick={() => setPage('home')}>Home</a>
                 <a href="#" onClick={() => setPage('books')}>Books</a>
                 <a href="#" onClick={() => setPage('about')}>About Us</a>
