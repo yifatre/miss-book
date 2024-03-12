@@ -1,0 +1,20 @@
+.reviews {
+    margin: 0 auto;
+    row-gap: 1rem;
+}
+
+.reviews li {
+
+    grid-template-columns: repeat(3, 12rem);
+    
+    align-items: center;
+
+    background-color: var(--clr2);
+    border-radius: 6px;
+
+}
+
+.reviews li>*{
+    padding: 2rem 1rem;
+
+}
