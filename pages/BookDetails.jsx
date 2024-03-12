@@ -62,7 +62,7 @@ export function BookDetails() {
         </article>
         <Link to={ `/book/${book.prevBookId}` }><button>Previous book</button></Link>
         <Link to={ `/book/${book.nextBookId}` }><button>Next book</button></Link>
-        <AddReview book={ book } />
+        <AddReview book={ book } setBook={ setBook } />
         { book.reviews && <Reviews reviews={ book.reviews } /> }
     </React.Fragment>
 }
