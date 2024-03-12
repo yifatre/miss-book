@@ -2,6 +2,7 @@ const { useState, useEffect } = React
 const { useParams, useNavigate } = ReactRouter
 
 import { bookService } from "../services/book.service.js"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 
 export function BookEdit() {
     const [bookToEdit, setBookToEdit] = useState(bookService.getEmptyBook())
@@ -17,7 +18,9 @@ export function BookEdit() {
                 setBookToEdit(book)
                 console.log('book:', book)
             })
-            .catch(err => console.log('Error:', err))
+            .catch(err => {
+                console.log('Error:', err)
+            })
         // .finally()
     }
 
@@ -25,8 +28,14 @@ export function BookEdit() {
         ev.preventDefault()
 
         bookService.save(bookToEdit)
-            .then(book => console.log('book:', book))
-            .catch(err => console.log('err:', err))
+            .then(book => {
+                console.log('book:', book)
+                showSuccessMsg('Book saved successfully')
+            })
+            .catch(err => {
+                console.log('Error:', err)
+                showErrorMsg('Could not save book')
+            })
     }
 
     function handleChange({ target }) {

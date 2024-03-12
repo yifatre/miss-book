@@ -3,6 +3,8 @@ const { useParams, useNavigate } = ReactRouter
 
 import { bookService } from "../services/book.service.js";
 import { LongText } from "../cmps/LongText.jsx";
+import { AddReview } from "../cmps/AddReview.jsx";
+import { Reviews } from "../cmps/Reviews.jsx";
 
 export function BookDetails() {
     const [book, setBook] = useState(null)
@@ -40,19 +42,23 @@ export function BookDetails() {
     }
 
     if (!book) return <div>loading...</div>
-    return <article className="book-details grid">
-        <img src={book.thumbnail}  />
-        <div className="flex flex-column">
-            <h2>{book.title}</h2>
-            <h3>{book.subtitle}</h3>
-            <h5>By: {book.authors}</h5>
-            <span>Price: <span className={getPriceClass()}>{(book.listPrice.amount).toLocaleString("en-US", { style: "currency", currency: book.listPrice.currencyCode })}</span></span>
-            <span>Number of pages: {book.pageCount} {getPageCountMsg()}</span>
-            <span>Language: {book.language}</span>
-            <span>Published on {book.publishedDate} {getDateMsg()}</span>
-            {book.listPrice.isOnSale && <img className="sale-icon" src="assets/imgs/sale.gif" alt="" />}
-            {book.description && <LongText txt={book.description} />}
-        </div>
-        {/* <button onClick={() => onGoBack()}>Go back</button> */}
-    </article>
+    return <React.Fragment>
+        <article className="book-details grid">
+            <img src={book.thumbnail} />
+            <div className="flex flex-column">
+                <h2>{book.title}</h2>
+                <h3>{book.subtitle}</h3>
+                <h5>By: {book.authors}</h5>
+                <span>Price: <span className={getPriceClass()}>{(book.listPrice.amount).toLocaleString("en-US", { style: "currency", currency: book.listPrice.currencyCode })}</span></span>
+                <span>Number of pages: {book.pageCount} {getPageCountMsg()}</span>
+                <span>Language: {book.language}</span>
+                <span>Published on {book.publishedDate} {getDateMsg()}</span>
+                {book.listPrice.isOnSale && <img className="sale-icon" src="assets/imgs/sale.gif" alt="" />}
+                {book.description && <LongText txt={book.description} />}
+            </div>
+            {/* <button onClick={() => onGoBack()}>Go back</button> */}
+        </article>
+        <AddReview book={book} />
+        {book.reviews && <Reviews reviews={book.reviews} />}
+    </React.Fragment>
 }

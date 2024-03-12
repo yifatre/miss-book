@@ -14,7 +14,9 @@ export const bookService = {
     // getNextBookId,
     // getFilterBy,
     getDefaultFilter,
-    setFilterBy
+    setFilterBy,
+    addReview,
+    getEmptyReview
 }
 
 window.bs = bookService
@@ -76,6 +78,18 @@ function setFilterBy(filterBy = {}) {
     return gFilterBy
 }
 
+function addReview(book, review) {
+
+    if (!book.reviews) book.reviews = []
+    book.reviews.push({ ...review, id: utilService.makeId() })
+    console.log('book:', book)
+    return save(book)
+
+}
+
+function getEmptyReview() {
+    return { fullname: '', rating: 3, readOn: new Date().toISOString().substring(0, 10) }
+}
 // function getNextBookId(bookId) {
 //     return storageService.query(BOOK_KEY)
 //         .then(books => {

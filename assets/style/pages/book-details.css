@@ -13,8 +13,12 @@
     color: green;
 }
 
+.book-details img{
+    width: 14rem;
+}
+
 .book-details .sale-icon {
-    width: 4rem;
+    width: 3rem;
     position: absolute;
-    right: 0;
+    left: 11rem;
 }

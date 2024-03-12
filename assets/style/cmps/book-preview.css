@@ -15,7 +15,8 @@
 }
 
 .book-preview img.sale-icon {
-    width: 4rem;
+    width: 2.5rem;
     position: absolute;
-    right: 0;
+    /* right: 0; */
+    left: 5.5rem;
 }

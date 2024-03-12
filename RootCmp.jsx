@@ -8,6 +8,7 @@ import { AboutUs } from './pages/AboutUs.jsx'
 import { BookIndex } from './pages/BookIndex.jsx'
 import { Home } from './pages/Home.jsx'
 import { BookEdit } from './pages/BookEdit.jsx'
+import { UserMsg } from './cmps/UserMsg.jsx'
 
 export function App() {
     const [page, setPage] = useState('books')
@@ -25,6 +26,7 @@ export function App() {
                     <Route path="/about" element={<AboutUs />} />
                 </Routes>
             </main>
+            <UserMsg />
         </section>
     </Router>
 }
