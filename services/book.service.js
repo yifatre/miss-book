@@ -16,7 +16,8 @@ export const bookService = {
     getDefaultFilter,
     setFilterBy,
     addReview,
-    getEmptyReview
+    getEmptyReview,
+    addGoogleBook
 }
 
 window.bs = bookService
@@ -571,3 +572,38 @@ function _createBook(title, price = 50) {
 //                 "isOnSale": false
 //     }
 // }
+///////////////////////////
+const a = {
+    "id": "OXeMG8wNskc",
+    "title": "metus hendrerit",
+    "subtitle": "mi est eros convallis auctor arcu dapibus himenaeos",
+    "authors": ["Barbara Booktland"],
+    "publishedDate": 1999,
+    "description": "placerat nisi sodales suscipit tellus tincidunt mauris elit sit luctus interdum ad dictum platea vehicula conubia fermentum habitasse congue suspendisse",
+    "pageCount": 713,
+    "categories": ["Computers", "Hack"],
+    "thumbnail": "assets/imgs/20.jpg",
+    "language": "en",
+    "listPrice": {
+        "amount": 109,
+        "currencyCode": "EUR",
+        "isOnSale": false
+    }
+}
+
+
+
+function addGoogleBook({ volumeInfo: googleBook }) {
+    console.log(googleBook)
+    const book = getEmptyBook(googleBook.title)
+    book.subtitle = ''
+    book.authors = googleBook.authors
+    book.publishedDate = googleBook.publishedDate
+    book.description = googleBook.description
+    book.pageCount = googleBook.pageCount
+    book.categories = googleBook.categories
+    book.thumbnail = googleBook.imageLinks.thumbnail
+    book.language = googleBook.language
+
+    return save(book)
+}

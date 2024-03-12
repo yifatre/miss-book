@@ -14,6 +14,7 @@ export function AppHeader() {
         <nav className="flex">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/book">Books</NavLink>
+            <NavLink to="/addBook">Add Books</NavLink>
             <NavLink to="/about">About Us</NavLink>
         </nav>
     </header>

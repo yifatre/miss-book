@@ -7,8 +7,6 @@ export function AboutUs() {
             <Link to="/about/team">Team</Link> |
             <Link to="/about/vision"> Vision</Link>
         </nav>
-
         <Outlet />
-
     </section>
 }
