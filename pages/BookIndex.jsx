@@ -44,7 +44,7 @@ export function BookIndex() {
     if (!books) return <div>loading...</div>
     return <section className='book-index'>
         <BookFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-        <Link to="/books/edit"><button>Add Book</button></Link>
+        <Link to="/book/edit"><button>Add Book</button></Link>
         <BookList books={books} onDeleteBook={onDeleteBook} />
 
     </section>

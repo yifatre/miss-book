@@ -13,7 +13,7 @@ export function AppHeader() {
         <img src="assets/imgs/magic-book.png" alt="" />
         <nav className="flex">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/books">Books</NavLink>
+            <NavLink to="/book">Books</NavLink>
             <NavLink to="/about">About Us</NavLink>
         </nav>
     </header>

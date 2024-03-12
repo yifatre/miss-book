@@ -1,5 +1,7 @@
 const { useState, useEffect } = React
 const { useParams, useNavigate } = ReactRouter
+const { Link } = ReactRouterDOM
+
 
 import { bookService } from "../services/book.service.js";
 import { LongText } from "../cmps/LongText.jsx";
@@ -44,21 +46,23 @@ export function BookDetails() {
     if (!book) return <div>loading...</div>
     return <React.Fragment>
         <article className="book-details grid">
-            <img src={book.thumbnail} />
+            <img src={ book.thumbnail } />
             <div className="flex flex-column">
-                <h2>{book.title}</h2>
-                <h3>{book.subtitle}</h3>
-                <h5>By: {book.authors}</h5>
-                <span>Price: <span className={getPriceClass()}>{(book.listPrice.amount).toLocaleString("en-US", { style: "currency", currency: book.listPrice.currencyCode })}</span></span>
-                <span>Number of pages: {book.pageCount} {getPageCountMsg()}</span>
-                <span>Language: {book.language}</span>
-                <span>Published on {book.publishedDate} {getDateMsg()}</span>
-                {book.listPrice.isOnSale && <img className="sale-icon" src="assets/imgs/sale.gif" alt="" />}
-                {book.description && <LongText txt={book.description} />}
+                <h2>{ book.title }</h2>
+                <h3>{ book.subtitle }</h3>
+                <h5>By: { book.authors }</h5>
+                <span>Price: <span className={ getPriceClass() }>{ (book.listPrice.amount).toLocaleString("en-US", { style: "currency", currency: book.listPrice.currencyCode }) }</span></span>
+                <span>Number of pages: { book.pageCount } { getPageCountMsg() }</span>
+                <span>Language: { book.language }</span>
+                <span>Published on { book.publishedDate } { getDateMsg() }</span>
+                { book.listPrice.isOnSale && <img className="sale-icon" src="assets/imgs/sale.gif" alt="" /> }
+                { book.description && <LongText txt={ book.description } /> }
             </div>
-            {/* <button onClick={() => onGoBack()}>Go back</button> */}
+            {/* <button onClick={() => onGoBack()}>Go back</button> */ }
         </article>
-        <AddReview book={book} />
-        {book.reviews && <Reviews reviews={book.reviews} />}
+        <Link to={ `/book/${book.prevBookId}` }><button>Previous book</button></Link>
+        <Link to={ `/book/${book.nextBookId}` }><button>Next book</button></Link>
+        <AddReview book={ book } />
+        { book.reviews && <Reviews reviews={ book.reviews } /> }
     </React.Fragment>
 }

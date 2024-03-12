@@ -11,10 +11,10 @@ export function BookList({ books, onDeleteBook }) {
             books.map(book => {
                 // console.log('book:', book)
                 return <li key={book.id}>
-                    <Link to={`/books/${book.id}`}>
+                    <Link to={`/book/${book.id}`}>
                         <BookPreview book={book} />
                     </Link>
-                    <Link to={`/books/edit/${book.id}`}>
+                    <Link to={`/book/edit/${book.id}`}>
                         <button>Edit</button>
                     </Link>
                     <button onClick={() => onDeleteBook(book.id)} >✕</button>
